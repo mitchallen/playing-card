@@ -14,10 +14,10 @@ module.exports = (function () {
     return function( suit, rank ) {
         if(!SUIT.isSuit(suit)) {
             return null;
-        };
+        }
         if(!RANK.isRank(rank)) {
             return null;
-        };
+        }
         return {
             suit: suit,
             rank: rank
