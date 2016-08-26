@@ -39,9 +39,13 @@ You can find more info on the suit and rank modules here:
 * https://www.npmjs.com/package/@mitchallen/playing-card-suit
 * https://www.npmjs.com/package/@mitchallen/playing-card-rank
 
+* * *
+
 ### Invalid Values
 
 * If the card factory is passed invalid values for __suit__ or __rank__ a null object will be returned.
+
+* * *
 
 ## Testing
 
