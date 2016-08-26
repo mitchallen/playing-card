@@ -29,6 +29,8 @@ The module itself returns a factory that you can use to create playing cards.
     
     var card = cardFactory(suit, rank);
     
+	should.exist(card);
+
 	card.suit.should.eql(suit);
     card.rank.should.eql(rank);
     
@@ -37,6 +39,9 @@ You can find more info on the suit and rank modules here:
 * https://www.npmjs.com/package/@mitchallen/playing-card-suit
 * https://www.npmjs.com/package/@mitchallen/playing-card-rank
 
+### Invalid Values
+
+* If the card factory is passed invalid values for __suit__ or __rank__ a null object will be returned.
 
 ## Testing
 
@@ -61,6 +66,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * * *
 
 ## Version History
+
+#### Version 0.1.1 
+
+* added validation checks for suit and rank
 
 #### Version 0.1.0 
 
