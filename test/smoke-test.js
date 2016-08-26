@@ -8,12 +8,18 @@
 
 var request = require('supertest'),
     should = require('should'),
+    SUIT = require("@mitchallen/playing-card-suit"),
+    RANK = require("@mitchallen/playing-card-rank"),
     modulePath = "../index";
 
 describe('module smoke test', function() {
 
+    var cardFactory = null;
+
     before(function(done) {
         // Call before all tests
+        delete require.cache[require.resolve(modulePath)];
+        cardFactory = require(modulePath);
         done();
     });
 
@@ -32,15 +38,18 @@ describe('module smoke test', function() {
         done();
     });
 
-    it('module should callback OK', function(done) {
-        delete require.cache[require.resolve(modulePath)];
-        let options = {};
-        require(modulePath)(options, function(err,data) {
-            should.not.exist(err);
-            should.exist(data);
-            should.exist(data.status)
-            data.status.should.eql("OK");
-            done();
-        });
+    it('card factory should exist', function(done) {
+        should.exist(cardFactory);
+        done();
+    });
+
+    it('should create card with suit and rank', function(done) {
+        const suit = SUIT.DIAMOND;
+        const rank = RANK.JACK;
+        var card = cardFactory(suit, rank);
+        should.exist(card);
+        card.suit.should.eql(suit);
+        card.rank.should.eql(rank);
+        done();
     });
 });

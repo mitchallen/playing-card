@@ -1,7 +1,7 @@
 
 @mitchallen/playing-card
 ==
-PUT DESCRIPTION HERE
+Playing card object.
 --
 * * *
 ## Installation
@@ -10,10 +10,33 @@ You must use __npm__ __2.7.0__ or higher because of the scoped package name.
 
     $ npm init
     $ npm install @mitchallen/playing-card --save
-  
+     
 * * *
 
 ## Usage
+
+A playing card contains a __suit__ and a __rank__ property. Use these two modules to create objects containing the suits and ranks for a standard 52 playing card deck:
+
+    var SUIT = require("@mitchallen/playing-card-suit");
+    var RANK = require("@mitchallen/playing-card-rank");
+
+The module itself returns a factory that you can use to create playing cards.
+
+	var cardFactory = require("@mitchallen/playing-card");
+
+    const suit = SUIT.DIAMOND;
+    const rank = RANK.JACK;
+    
+    var card = cardFactory(suit, rank);
+    
+	card.suit.should.eql(suit);
+    card.rank.should.eql(rank);
+    
+You can find more info on the suit and rank modules here:
+
+* https://www.npmjs.com/package/@mitchallen/playing-card-suit
+* https://www.npmjs.com/package/@mitchallen/playing-card-rank
+
 
 ## Testing
 

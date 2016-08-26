@@ -7,7 +7,11 @@
 
 "use strict";
 
-module.exports = function (spec, callback) {
-    let data = { status: "OK" };
-    callback(null, data);
-};
+module.exports = (function () {
+    return function( suit, rank ) {
+        return {
+            suit: suit,
+            rank: rank
+        };
+    };
+})();
