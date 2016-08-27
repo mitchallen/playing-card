@@ -71,6 +71,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 ## Version History
 
+#### Version 0.1.5
+
+* refreshed for latest version of suit and rank module dependencies
+
 #### Version 0.1.4
 
 * added missing checkins and refreshed readme
