@@ -1,6 +1,6 @@
 {
   "name": "@mitchallen/playing-card",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "playing card object",
   "main": "index.js",
   "scripts": {
