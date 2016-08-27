@@ -27,7 +27,7 @@ The module itself returns a factory that you can use to create playing cards.
     const suit = SUIT.DIAMOND;
     const rank = RANK.JACK;
     
-    var card = cardFactory(suit, rank);
+    var card = cardFactory({suit: suit, rank: rank});
     
 	should.exist(card);
 
@@ -70,6 +70,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * * *
 
 ## Version History
+
+#### Version 0.1.3
+
+* factory now uses spec object to create card
 
 #### Version 0.1.2 
 

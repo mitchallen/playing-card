@@ -53,6 +53,16 @@ describe('module smoke test', function() {
         done();
     });
 
+    it('should create card if spec parameters in different order', function(done) {
+        const suit = SUIT.DIAMOND;
+        const rank = RANK.JACK;
+        var card = cardFactory({rank: rank, suit: suit});
+        should.exist(card);
+        card.suit.should.eql(suit);
+        card.rank.should.eql(rank);
+        done();
+    });
+
     it('should create multiple cards', function(done) {
         const list = [
             { suit: SUIT.DIAMOND, rank: RANK.JACK },
