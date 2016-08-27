@@ -71,6 +71,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 ## Version History
 
+#### Version 0.1.4
+
+* added missing checkins and refreshed readme
+
 #### Version 0.1.3
 
 * factory now uses spec object to create card
