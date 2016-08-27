@@ -46,7 +46,7 @@ describe('module smoke test', function() {
     it('should create card with suit and rank', function(done) {
         const suit = SUIT.DIAMOND;
         const rank = RANK.JACK;
-        var card = cardFactory(suit, rank);
+        var card = cardFactory({suit: suit, rank: rank});
         should.exist(card);
         card.suit.should.eql(suit);
         card.rank.should.eql(rank);
@@ -54,49 +54,63 @@ describe('module smoke test', function() {
     });
 
     it('should create multiple cards', function(done) {
-        const suit = [ SUIT.DIAMOND, SUIT.SPADE ];
-        const rank = [ RANK.JACK, RANK.TWO ];
+        const list = [
+            { suit: SUIT.DIAMOND, rank: RANK.JACK },
+            { suit: SUIT.SPADE, rank: RANK.TWO }
+        ];
         var card = [ 
-         cardFactory(suit[0], rank[0]),
-         cardFactory(suit[1], rank[1]),
+         cardFactory(list[0]),
+         cardFactory(list[1]),
         ];
         // validate card[0]
         should.exist(card[0]);
-        card[0].suit.should.eql(suit[0]);
-        card[0].rank.should.eql(rank[0]);
+        card[0].suit.should.eql(list[0].suit);
+        card[0].rank.should.eql(list[0].rank);
         // validate card[1]
         should.exist(card[1]);
-        card[1].suit.should.eql(suit[1]);
-        card[1].rank.should.eql(rank[1]);
+        card[1].suit.should.eql(list[1].suit);
+        card[1].rank.should.eql(list[1].rank);
         done();
     });
 
     it('should not create card if bad suit', function(done) {
-        const suit = -1;
-        const rank = RANK.JACK;
-        var card = cardFactory(suit, rank);
+        var card = cardFactory({ suit: -1, rank: RANK.JACK });
         should.not.exist(card);
         done();
     });
 
     it('should not create card if bad rank', function(done) {
-        const suit = SUIT.DIAMOND;
-        const rank = -1;
-        var card = cardFactory(suit, rank);
+        var card = cardFactory({ suit: SUIT.DIAMOND, rank: -1 });
         should.not.exist(card);
         done();
     });
 
     it('should not create card if bad suit and bad rank', function(done) {
-        const suit = -1;
-        const rank = -1;
-        var card = cardFactory(suit, rank);
+        var card = cardFactory({ suit: -1, rank: -1 });
         should.not.exist(card);
         done();
     });
 
-    it('should not create card if parameters missing', function(done) {
+    it('should not create card if parameter object missing', function(done) {
         var card = cardFactory();
+        should.not.exist(card);
+        done();
+    });
+
+    it('should not create card if parameter object empry', function(done) {
+        var card = cardFactory({});
+        should.not.exist(card);
+        done();
+    });
+
+    it('should not create card if suit parameter missing', function(done) {
+        var card = cardFactory({ rank: RANK.JACK });
+        should.not.exist(card);
+        done();
+    });
+
+    it('should not create card if rank parameter missing', function(done) {
+        var card = cardFactory({ suit: SUIT.DIAMOND });
         should.not.exist(card);
         done();
     });
